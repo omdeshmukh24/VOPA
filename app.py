@@ -68,13 +68,16 @@ def view_assignment_status():
     result = [a for a in assignments if a["teacherId"] == teacher_id]
     return jsonify(result), 200
 
-@app.route('/')
-def home():
-    return "Welcome to the VOPA Assignment API!"
-
 @app.route('/api/assignments/<int:assignment_id>', methods=['GET'])
 def get_assignment(assignment_id):
     for assignment in assignments:
         if assignment["assignmentId"] == assignment_id:
             return jsonify(assignment), 200
     return jsonify({"error": "Assignment not found"}), 404
+
+@app.route('/')
+def home():
+    return "Welcome to the VOPA Assignment API!"
+
+if __name__ == "__main__":
+    app.run(debug=True)
