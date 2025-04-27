@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assign Lesson</title>
+</head>
+<body>
+    <h2>Assign Lesson to Student</h2>
+    <form action="/api/assignments" method="POST">
+        <label for="teacherId">Teacher ID:</label><br>
+        <input type="text" id="teacherId" name="teacherId"><br><br>
+        
+        <label for="studentId">Student ID:</label><br>
+        <input type="text" id="studentId" name="studentId"><br><br>
+        
+        <label for="lessonId">Lesson ID:</label><br>
+        <input type="text" id="lessonId" name="lessonId"><br><br>
+
+        <input type="submit" value="Assign Lesson">
+    </form>
+</body>
+</html>
