@@ -1,0 +1,63 @@
+# VOPA - Flask API
+
+The project is a simple Flask application with APIs for:
+- Assigning lessons to students
+- Viewing incomplete assignments
+- Marking assignments as completed
+- Viewing assignment status by teacher
+
+# Project Files
+
+- `app.py` 
+- `form.html` 
+- `requirements.txt` 
+
+## Hosting Information
+
+The application is deployed on an AWS EC2 instance using Gunicorn.
+
+**Hosted API Link:**  
+http://<your-ec2-public-ip>:5000/
+
+## Setup Commands
+
+To run this project on your server:
+
+```bash
+# Update packages
+sudo apt update
+
+# Install Python3, pip, and virtual environment
+sudo apt install python3-pip python3-venv -y
+
+# Move to project folder and activate environment
+cd flask-api
+python3 -m venv venv
+source venv/bin/activate
+
+# Install project dependencies
+pip install -r requirements.txt
+
+# Start the Flask app using Gunicorn
+gunicorn --bind 0.0.0.0:5000 app:app
+
+# Testing the APIs (Postman)
+
+# Assign Lesson (POST)
+URL: `http://<your-ec2-ip>:5000/api/assignments`  
+Body (JSON):
+```json
+{
+  "teacherId": "t1",
+  "studentId": "s1",
+  "lessonId": "l1"
+}
+
+# View Incomplete Lessons (GET)
+URL: `http://<your-ec2-ip>:5000/api/assignments/incomplete?studentId=s1`
+
+# Mark Lesson Complete (PUT)
+URL: `http://<your-ec2-ip>:5000/api/assignments/1/complete`
+
+# View Assignment Status (GET)
+URL: `http://<your-ec2-ip>:5000/api/assignments/status?teacherId=t1`
